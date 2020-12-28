@@ -7,18 +7,18 @@ table! {
 }
 
 table! {
-    contact_tag (id) {
+    contact_email (id) {
         id -> Int4,
+        email -> Varchar,
         contact_id -> Int4,
-        tag_id -> Int4,
     }
 }
 
 table! {
-    email (id) {
+    contact_tag (id) {
         id -> Int4,
-        email -> Varchar,
         contact_id -> Int4,
+        tag_id -> Int4,
     }
 }
 
@@ -37,15 +37,9 @@ table! {
     }
 }
 
+joinable!(contact_email -> contact (contact_id));
 joinable!(contact_tag -> contact (contact_id));
 joinable!(contact_tag -> tag (tag_id));
-joinable!(email -> contact (contact_id));
 joinable!(phone -> contact (contact_id));
 
-allow_tables_to_appear_in_same_query!(
-    contact,
-    contact_tag,
-    email,
-    phone,
-    tag,
-);
+allow_tables_to_appear_in_same_query!(contact, contact_email, contact_tag, phone, tag,);

@@ -1,4 +1,4 @@
-CREATE TABLE email
+CREATE TABLE contact_email
 (
     id         SERIAL PRIMARY KEY,
     email      VARCHAR NOT NULL UNIQUE,
