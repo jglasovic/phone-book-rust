@@ -42,4 +42,10 @@ joinable!(contact_tag -> contact (contact_id));
 joinable!(contact_tag -> tag (tag_id));
 joinable!(phone -> contact (contact_id));
 
-allow_tables_to_appear_in_same_query!(contact, contact_email, contact_tag, phone, tag,);
+allow_tables_to_appear_in_same_query!(
+    contact,
+    contact_email,
+    contact_tag,
+    phone,
+    tag,
+);
