@@ -1,6 +1,6 @@
 use super::email::EmailDTO;
 use super::phone::PhoneDTO;
-use super::tag::TagDTO;
+// use super::tag::TagDTO;
 use crate::schema::contact::{self, dsl::contact as contact_dal};
 use diesel::{pg::PgConnection, prelude::*};
 use serde_derive::{Deserialize, Serialize};
@@ -12,7 +12,7 @@ pub struct ContactDTO {
   pub last_name: String,
   pub emails: Vec<EmailDTO>,
   pub phone_numbers: Vec<PhoneDTO>,
-  pub tags: Vec<TagDTO>,
+  // pub tags: Vec<TagDTO>,
 }
 
 #[derive(Deserialize, Insertable)]
@@ -57,7 +57,7 @@ impl Contact {
     &self,
     emails: Vec<EmailDTO>,
     phone_numbers: Vec<PhoneDTO>,
-    tags: Vec<TagDTO>,
+    // tags: Vec<TagDTO>,
   ) -> ContactDTO {
     ContactDTO {
       id: self.id,
@@ -65,7 +65,7 @@ impl Contact {
       last_name: self.last_name,
       emails,
       phone_numbers,
-      tags,
+      // tags,
     }
   }
 }
