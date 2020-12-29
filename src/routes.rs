@@ -1,8 +1,14 @@
+use super::contact::*;
 use super::db::Conn as DbConn;
 use rocket_contrib::json::Json;
+use serde_derive::Deserialize;
 use serde_json::Value;
 
-use crate::models::*;
+// #[derive(Deserialize)]
+pub struct Response<T> {
+  pub status: i32,
+  pub result: T,
+}
 
 #[get("/contact", format = "application/json")]
 pub fn get_all(conn: DbConn) -> Json<Value> {
@@ -27,6 +33,6 @@ pub fn find_single(conn: DbConn, id: String) -> Json<Value> {
   let user_id: i32 = id.trim().parse().expect("error");
   Json(json!({
       "status": 200,
-      "result": Contact::get_by_id(user_id, &conn).first(),
+      "result": Contact::get_by_id(user_id, &conn),
   }))
 }

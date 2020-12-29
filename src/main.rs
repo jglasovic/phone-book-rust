@@ -1,5 +1,5 @@
 #![feature(plugin, const_fn, decl_macro, proc_macro_hygiene)]
-#![allow(proc_macro_derive_resolution_fallback)]
+#![allow(proc_macro_derive_resolution_fallback, unused_imports)]
 
 #[macro_use]
 extern crate diesel;
@@ -10,11 +10,10 @@ extern crate r2d2_diesel;
 extern crate rocket;
 extern crate rocket_contrib;
 #[macro_use]
-extern crate serde_derive;
-#[macro_use]
 extern crate serde_json;
 
 use dotenv::dotenv;
+use models::*;
 use routes::*;
 use std::env;
 
